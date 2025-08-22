@@ -155,7 +155,7 @@ def match_for_comparison(mocap: pd.DataFrame, opencap: pd.DataFrame) -> pd.DataF
 st.sidebar.title("Controls")
 source_choice = st.sidebar.selectbox(
     "Data source",
-    options=["Use local file Pelvic Parameters.xlsx", "Upload Excel"],
+    options=["Use local file pelvic-parameters.xlsx", "Upload Excel"],
     index=0,
 )
 
@@ -173,9 +173,9 @@ with st.spinner("Loading data..."):
         if uploaded_file is not None:
             sheets = load_excel(uploaded_file.getvalue())
         else:
-            default_path = "Pelvic Parameters.xlsx"
+            default_path = "pelvic-parameters.xlsx"
             if not os.path.exists(default_path):
-                st.error("Pelvic Parameters.xlsx not found in the working directory.")
+                st.error("pelvic-parameters.xlsx not found in the working directory.")
                 st.stop()
             sheets = load_excel(default_path)
     except Exception as e:
@@ -391,3 +391,4 @@ else:
         )
 
 st.caption("Report generated with Streamlit • Interactive, modern, and clean layout.")
+
