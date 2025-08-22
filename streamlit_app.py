@@ -368,7 +368,8 @@ else:
             x="posture", y=metric, color="sheet", barmode="group",
             title=f"Mean by Posture and Sheet • {metric}"
         )
-        fig.update_layout(height=420, margin=dict(l=10, r=10, t=40, b=10))
+        fig.update_layout(height=420, margin=dict(l=10, r=10, t=40, b=10), yaxis=dict(
+        range=[combined[metric].min() - 1, combined[metric].max() + 1] ))
         st.plotly_chart(fig, use_container_width=True)
 
     # Scatter relationships
@@ -391,4 +392,5 @@ else:
         )
 
 st.caption("Report generated with Streamlit • Interactive, modern, and clean layout.")
+
 
