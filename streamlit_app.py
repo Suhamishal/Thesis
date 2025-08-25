@@ -206,22 +206,6 @@ for name in sheet_names:
     df = normalized[name]
     if not df.empty:
         normalized[name] = df[df["participant"].isin(participants_filter) & df["posture"].isin(postures_filter)]
-# ---------- Descriptive Analysis ----------
-st.subheader("Descriptive Analysis")
-
-# Extract numeric columns for descriptive statistics
-combined = pd.concat([normalized[name] for name in normalized], ignore_index=True)
-descriptive_stats = combined.describe()
-
-st.write("Below are the descriptive statistics for the pelvic parameters (Tilt, Obliquity, and Rotation).")
-st.dataframe(descriptive_stats, use_container_width=True)
-
-st.markdown("""
-### Insights from the Descriptive Analysis:
-- **Tilt Range**: The range of tilt values is narrow, with a low standard deviation, indicating minimal variation in the tilt across the data.
-- **Obliquity**: The obliquity values show greater variability, suggesting that the lateral tilt differs more between participants.
-- **Rotation**: The rotation values have the highest variation, with some large differences observed in the rotation range.
-""")
 
 # ---------- Overview Metrics ----------
 col1, col2, col3, col4 = st.columns(4)
@@ -408,6 +392,7 @@ else:
         )
 
 st.caption("Report generated with Streamlit • Interactive, modern, and clean layout.")
+
 
 
 
